@@ -1,9 +1,10 @@
 set(VCPKG_BUILD_TYPE release) # header-only
 
 vcpkg_from_github(OUT_SOURCE_PATH SOURCE_PATH
-    REPO dtschump/CImg
-    REF "v.${VERSION}"
-    SHA512 e52492c846311c195b36ee78d5e4fceac1de7c6df0c9c46700f0ea3b11cbad07e9e287a323ddd1e0a61045e859d623ac88473911577f8fa544589461bc32f9e5
+    REPO GreycLab/CImg
+    # Using commit id becuase upstream likes to change tags
+    REF 63ad0902bc0b3b3e82e30d8ac3e5135937bac0c0
+    SHA512 c97b398a34d32c92f578f540fbcdcca4b81471f733bc9426f1529f3da77b09cdcb85593d5513e69511b2c7d1a6d081aaea958548087577ed5d06cd9c5acfa27d
     HEAD_REF master
 )
 
@@ -16,7 +17,7 @@ vcpkg_cmake_configure(
 vcpkg_cmake_install()
 
 vcpkg_install_copyright(
-    FILE_LIST 
+    FILE_LIST
         "${SOURCE_PATH}/Licence_CeCILL-C_V1-en.txt"
         "${SOURCE_PATH}/Licence_CeCILL_V2-en.txt"
 )

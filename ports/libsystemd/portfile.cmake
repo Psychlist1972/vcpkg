@@ -7,12 +7,20 @@ vcpkg_from_github(
     disable-warning-nonnull.patch
     only-libsystemd.patch
     pkgconfig.patch
+    fix-2604-build.patch
 )
 
 set(static false)
 if(VCPKG_LIBRARY_LINKAGE STREQUAL "static")
   set(static pic)
 endif()
+
+vcpkg_find_acquire_program(PYTHON3)
+x_vcpkg_get_python_packages(
+    PYTHON_VERSION 3
+    PYTHON_EXECUTABLE "${PYTHON3}"
+    PACKAGES "jinja2"
+)
 
 vcpkg_configure_meson(
   SOURCE_PATH "${SOURCE_PATH}"

@@ -9,10 +9,13 @@ vcpkg_extract_source_archive(
     ARCHIVE "${ARCHIVE}"
     PATCHES
         disable-gnu-source.diff
+        find-mathlib.diff
 )
 
 vcpkg_cmake_configure(
     SOURCE_PATH "${SOURCE_PATH}"
+    OPTIONS
+    	-DENABLE_FORTRAN=OFF
 )
 
 vcpkg_cmake_install()
